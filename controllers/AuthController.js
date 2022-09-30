@@ -59,8 +59,9 @@ const login = async (req, res) => {
 }
 
 const logout = (req,res) => {
-  res.clearCookie()
-}
+  res.clearCookie('access_token');
+  res.clearCookie('refresh_token');
+  res.status(200).json('Logout success')}
 
 
 

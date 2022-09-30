@@ -5,6 +5,7 @@ const helmet = require("helmet")
 const morgan = require("morgan")
 const dotenv = require("dotenv")
 const mongoose = require("mongoose")
+const redis = require("redis")
 
 const authRoute = require("./routes/auth")
 const userRoute = require("./routes/users")
@@ -19,10 +20,21 @@ mongoose
         console.log(err);
     })
 
+const redisClient = redis.createClient(6379)
+async () =>{
+redisClient.on("err", (err) => {
+  console.log("Redis Clint Error...");
+})
+redisClient.on("ready", ()=> console.log("Redis is ready..."))
+redisClient.connect()
+redisClient.ping()
+}
+
+
 app.use(cors({origin: true, credentials: true}));
 app.use(express.json());
 app.use(helmet())
-app.use(morgan("common"))
+app.use(morgan("dev"))
 
 //--------------------------------
 app.use("/api/v1/auth", authRoute)
