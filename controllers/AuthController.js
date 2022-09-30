@@ -6,13 +6,12 @@ const crypto = require("crypto")
 
 
 const register = async (req, res) => {
+  const hash = crypto.createHash('sha256').update(req.body.password).digest('base64');
+
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
-    password: CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SECURITY
-    ).toString()
+    password: hash
   })
   try {
     const savedUser = await newUser.save()
@@ -60,11 +59,18 @@ const login = async (req, res) => {
   }
 }
 
+const logout = (req,res) => {
+  res.clearCookie('access_token');
+  res.clearCookie('refresh_token')
+  res.status(200).json('Logout success')
+}
+
 
 
 
 
 module.exports = {
   login,
-  register
+  register,
+  logout
 }
