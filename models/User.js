@@ -13,11 +13,25 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-UserSchema.pre('find', () => {
+// UserSchema.pre('find', () => {
+//   logger.log({
+//     level: "error",
+//     message: doc
+//   })
+// })
+UserSchema.pre('findOne', () => {
   logger.log({
     level: "info",
     message: doc
   })
 })
+
+UserSchema.pre('save', () => {
+  logger.log({
+    level: "info",
+    message: doc
+  })
+})
+
 
 module.exports = mongoose.model("User", UserSchema);
