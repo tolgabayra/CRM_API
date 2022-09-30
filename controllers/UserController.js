@@ -3,13 +3,7 @@ const crypto = require("crypto")
 
 
 
-const createUser = async (req,res) => {
-  try {
-    
-  } catch (err) {
-    res.status(500).json(err)
-  }
-}
+
 const deleteUser = async (req,res) => {
   try {
     await User.findByIdAndDelete(req.params.id)
@@ -59,7 +53,6 @@ const getAllUser = async (req,res) => {
 
 
 module.exports = {
-    createUser,
     deleteUser,
     updateUser,
     getUser,
