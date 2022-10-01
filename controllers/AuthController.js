@@ -13,9 +13,11 @@ const register = async (req, res) => {
     password: hash
   })
   try {
-    const savedUser = await newUser.save()
-    res.status(201).json(savedUser)
+    console.log(newUser);
+    const user = await newUser.save()
+    res.status(201).json(user)
   } catch (err) {
+    console.log(err);
     res.status(500).json(err)
   }
 

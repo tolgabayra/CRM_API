@@ -19,19 +19,18 @@ const UserSchema = new mongoose.Schema(
 //     message: doc
 //   })
 // })
-UserSchema.pre('findOne', () => {
-  logger.log({
-    level: "info",
-    message: doc
-  })
-})
+// UserSchema.pre('findOne', () => {
+//   logger.log({
+//     level: "info",
+//     message: doc
+//   })
+// })
 
-UserSchema.pre('save', () => {
-  logger.log({
-    level: "info",
-    message: doc
-  })
-})
+ UserSchema.post('save', () => {
+   logger.log({
+     level: "info",
+   })
+ })
 
 
 module.exports = mongoose.model("User", UserSchema);
