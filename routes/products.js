@@ -4,10 +4,10 @@ const schema = require("../validations/Product")
 const validate = require("../middlewares/verifyValidate")
 
 
-router.get("/:id", validate(schema.createValidation),ProductController.getProduct)
-router.get("/",  validate(schema.createValidation),ProductController.getAllProduct)
+router.get("/:id",ProductController.getProduct)
+router.get("/",ProductController.getAllProduct)
 router.post("/", validate(schema.createValidation) ,ProductController.createProduct)
-router.delete("/:id", validate(schema.createValidation) ,ProductController.deleteProduct)
+router.delete("/:id",ProductController.deleteProduct)
 router.put("/:id", validate(schema.createValidation) ,ProductController.updateProduct)
 
 

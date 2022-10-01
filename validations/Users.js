@@ -2,7 +2,7 @@ const Joi = require("joi")
 
 const createValidation = Joi.object({
     username: Joi.string().required().min(3),
-    password: Joi.string().min(8),
+    password: Joi.string().min(5),
     email: Joi.string().email().required().min(8)
 })
 
