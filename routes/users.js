@@ -5,7 +5,7 @@ const validate = require("../middlewares/verifyValidate")
 
 router.get("/:id",UserController.getUser)
 router.get("/" ,UserController.getAllUser)
-router.delete("/:id",validate(schema.createValidation) ,UserController.deleteUser)
+router.delete("/:id",UserController.deleteUser)
 router.put("/:id",validate(schema.createValidation) ,UserController.updateUser)
 
 module.exports = router

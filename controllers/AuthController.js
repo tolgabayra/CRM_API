@@ -41,8 +41,8 @@ const login = async (req, res) => {
 
 
     if (user.password === dbPassword2) {
-      const accessToken = jwt.sign({ email }, process.enc.JWT_SECRET_KEY, { expiresIn: "1d" })
-      const refreshToken = jwt.sign({ email }, process.enc.JWT_SECRET_KEY)
+      const accessToken = jwt.sign({ email }, process.env.JWT_SECRET_KEY, { expiresIn: "1d" })
+      const refreshToken = jwt.sign({ email }, process.env.JWT_SECRET_KEY)
       res.cookie('access_token', accessToken, {
         origin: '*',
         httpOnly: true
