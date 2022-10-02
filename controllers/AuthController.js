@@ -33,6 +33,7 @@ const login = async (req, res) => {
     const user = await User.findOne({ email })
     if (!user) {
       res.status(401).json({ message: "Email is not found !!!" })
+      return
     }
     const dbPassword2 = crypto.createHash('sha256').update(password).digest('base64');
     
@@ -51,7 +52,7 @@ const login = async (req, res) => {
         origin: '*',
         httpOnly: true
       })
-      res.status(200).json({ message: "Login is Successful..." })
+      res.status(200).json(user)
     }else{
       res.status(401).json("Password is wrong...")
     }
