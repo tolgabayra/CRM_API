@@ -10,6 +10,8 @@ const redis = require("redis")
 const authRoute = require("./routes/auth")
 const userRoute = require("./routes/users")
 const productRoute = require("./routes/products")
+const recipeRoute = require("./routes/recipes")
+
 dotenv.config()
 mongoose
     .connect(process.env.DB_URL)
@@ -40,6 +42,8 @@ app.use(morgan("dev"))
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/users", userRoute)
 app.use("/api/v1/products", productRoute)
+app.use("/api/v1/recipes", recipeRoute)
+
 
 app.listen(process.env.APP_PORT || 8000, () => {
     console.log("ApiServer1 is running!");
