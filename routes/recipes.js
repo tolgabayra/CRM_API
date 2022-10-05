@@ -1,6 +1,5 @@
 const router = require("express").Router()
 const RecipeController = require("../controllers/RecipeController")
-const schema = require("../validations/Recipe")
 const validate = require("../middlewares/verifyValidate")
 
 

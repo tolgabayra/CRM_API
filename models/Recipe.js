@@ -6,7 +6,8 @@ const RecipeSchema = new mongoose.Schema(
     content: { type: String, required: true, },
     img: { type: String, required: true },
     categories: { type: Array },
-    star: { type: Number, required: true },
+    star: { type: Number},
+    user_id: {type: Number}
     
   },
   { timestamps: true }
